@@ -1,0 +1,43 @@
+<!doctype html>
+<head>
+    <title> Gaems</title>
+</head>
+
+<body>
+    <canvas id="gameCanvas" width="600" height="600"></canvas>
+    <script>
+        var canvas;
+        var canvasContext;
+
+        window.onload = function() {
+            canvas = document.getElementById('gameCanvas');
+            canvasContext = canvas.getContext('2d');
+
+            setInterval(mainloop, 1000/50);
+        }
+        function mainloop(){
+            colorRect(0,0,canvas.width,canvas.height,'black');
+            drawImgs(player,playerXpos,playerYpos,playerSize,playerSize);
+
+        }
+
+        var player = new Image();
+        player.src = 'player.png';
+
+        playerXpos = 0;
+        playerYpos = 0;
+        playerXspeed = 5;
+        playerYspeed = 5;
+        playerSize = 25;
+
+        function colorRect(x,y,w,h,c){
+            canvasContext.fillStyle = c;
+            canvasContext.fillRect(x,y,w,h);
+        }
+
+        function drawImgs(src,x,y,w,h){
+            canvasContext.drawImage(src,x,y,w,h);
+        }
+
+    </script>
+</body>
